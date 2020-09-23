@@ -63,12 +63,10 @@ void NetNodeConfig::initOptions(boost::program_options::options_description& des
 }
 
 NetNodeConfig::NetNodeConfig() {
-  bindIp = "";
   bindPort = 0;
   externalPort = 0;
   allowLocalIp = false;
   hideMyPort = false;
-  configFolder = Tools::getDefaultDataDirectory();
   testnet = false;
 }
 
