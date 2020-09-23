@@ -298,6 +298,7 @@ namespace CryptoNote
           loaded = true;
         }
       } catch (std::exception&) {
+        std::cerr << "Exception in NodeServer::init_config" << std::endl;
       }
 
       if (!loaded) {
