@@ -21,11 +21,9 @@ Configuration::Configuration() {
   daemonize = false;
   registerService = false;
   unregisterService = false;
-  logFile = "payment_gate.log";
   testnet = false;
   printAddresses = false;
   logLevel = Logging::INFO;
-  bindAddress = "";
   bindPort = 0;
   secretSpendKey = "";
   secretViewKey = "";
