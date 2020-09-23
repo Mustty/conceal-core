@@ -34,7 +34,7 @@ HttpResponse::HTTP_STATUS HttpParser::parseResponseStatusFromString(const std::s
   else throw std::system_error(make_error_code(CryptoNote::error::HttpParserErrorCodes::UNEXPECTED_SYMBOL),
       "Unknown HTTP status code is given");
 
-  return CryptoNote::HttpResponse::STATUS_200; //unaccessible
+  //return CryptoNote::HttpResponse::STATUS_200; //unaccessible
 }
 
 
