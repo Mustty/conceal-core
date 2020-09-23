@@ -78,7 +78,7 @@ bool constructTransaction(
   const std::vector<TransactionDestinationEntry>& destinations,
   const std::vector<tx_message_entry>& messages,
   uint64_t ttl,
-  std::vector<uint8_t> extra,
+  const std::vector<uint8_t>& extra,
   Transaction& tx,
   uint64_t unlock_time,
   Logging::ILogger& log,
