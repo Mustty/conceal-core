@@ -25,7 +25,7 @@ struct Configuration {
   void init(const boost::program_options::variables_map& options);
   static void initOptions(boost::program_options::options_description& desc);
 
-  std::string bindAddress;
+  std::string bindAddress = "";
   uint16_t bindPort;
   std::string rpcUser;
   std::string rpcPassword;
@@ -34,7 +34,7 @@ struct Configuration {
 
   std::string containerFile;
   std::string containerPassword;
-  std::string logFile;
+  std::string logFile = "payment_gate.log";
   std::string serverRoot;
 
   bool generateNewContainer;
