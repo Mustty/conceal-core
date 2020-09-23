@@ -93,7 +93,7 @@ bool BinaryOutputStreamSerializer::binary(std::string& value, Common::StringView
 bool BinaryOutputStreamSerializer::operator()(double& value, Common::StringView name) {
   assert(false); //the method is not supported for this type of serialization
   throw std::runtime_error("double serialization is not supported in BinaryOutputStreamSerializer");
-  return false;
+  //return false;
 }
 
 void BinaryOutputStreamSerializer::checkedWrite(const char* buf, size_t size) {
