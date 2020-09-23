@@ -7,7 +7,7 @@
 #pragma once
 
 #include <string>
-
+#include "Common/Util.h"
 #include <boost/program_options.hpp>
 
 namespace CryptoNote {
@@ -19,7 +19,7 @@ public:
   static void initOptions(boost::program_options::options_description& desc);
   void init(const boost::program_options::variables_map& options);
 
-  std::string configFolder;
+  std::string configFolder = Tools::getDefaultDataDirectory();
   bool configFolderDefaulted = true;
 };
 
