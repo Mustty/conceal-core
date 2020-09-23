@@ -422,7 +422,7 @@ std::error_code createTransfers(
         std::unordered_set<Crypto::PublicKey>::iterator key_it = public_keys_seen.find(out.key);
         if (key_it != public_keys_seen.end()) {
           throw std::runtime_error("duplicate transaction output key is found");
-          return std::error_code();
+          //return std::error_code();
         }
         temp_keys.push_back(out.key);		
 	  }   
