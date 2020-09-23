@@ -43,7 +43,10 @@ namespace {
       }
     }
 
-    TransferIteratorList(TransferIteratorList<TIterator>&& other) {
+    ~TransferIteratorList(){}
+
+    TransferIteratorList(TransferIteratorList<TIterator> &&other)
+    {
       m_list = std::move(other.m_list);
       m_end = std::move(other.m_end);
     }
