@@ -1851,9 +1851,10 @@ namespace CryptoNote
     logger(INFO, BRIGHT_WHITE) << "Current blockchain index:";
 
     size_t height = 0;
-    for (auto i = blockIds.begin(); i != blockIds.end(); ++i, ++height)
+    for (auto i = blockIds.begin(); i != blockIds.end(); ++i)
     {
       logger(INFO, BRIGHT_WHITE) << "id\t\t" << *i << " height" << height;
+      ++height;
     }
   }
 
@@ -2086,8 +2087,6 @@ namespace CryptoNote
       else
         return false;
     }
-
-    return false;
   }
 
   bool Blockchain::check_tx_input(const KeyInput &txin, const Crypto::Hash &tx_prefix_hash, const std::vector<Crypto::Signature> &sig, uint32_t *pmax_related_block_height)
