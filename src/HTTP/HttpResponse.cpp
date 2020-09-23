@@ -24,7 +24,7 @@ const char* getStatusString(CryptoNote::HttpResponse::HTTP_STATUS status) {
     throw std::runtime_error("Unknown HTTP status code is given");
   }
 
-  return ""; //unaccessible
+  //return ""; //unaccessible
 }
 
 const char* getErrorBody(CryptoNote::HttpResponse::HTTP_STATUS status) {
@@ -39,7 +39,7 @@ const char* getErrorBody(CryptoNote::HttpResponse::HTTP_STATUS status) {
     throw std::runtime_error("Error body for given status is not available");
   }
 
-  return ""; //unaccessible
+  //return ""; //unaccessible
 }
 
 } //namespace
