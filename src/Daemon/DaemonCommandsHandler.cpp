@@ -271,7 +271,7 @@ bool DaemonCommandsHandler::print_block_by_hash(const std::string &arg)
 //--------------------------------------------------------------------------------
 uint64_t DaemonCommandsHandler::calculatePercent(const CryptoNote::Currency &currency, uint64_t value, uint64_t total)
 {
-  return static_cast<uint64_t>(100.0 * currency.coin() * static_cast<double>(value) / static_cast<double>(total));
+  return static_cast<uint64_t>(100.0 * static_cast<double>(currency.coin()) * static_cast<double>(value) / static_cast<double>(total));
 }
 //--------------------------------------------------------------------------------
 bool DaemonCommandsHandler::print_stat(const std::vector<std::string> &args)
