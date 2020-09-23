@@ -12,7 +12,7 @@
 namespace CryptoNote {
 
 CoreConfig::CoreConfig() {
-  configFolder = Tools::getDefaultDataDirectory();
+  
 }
 
 void CoreConfig::init(const boost::program_options::variables_map& options) {
