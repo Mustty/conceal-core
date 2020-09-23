@@ -5,12 +5,15 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "P2pContext.h"
+#include <iostream>
+#include <iomanip>
+#include <sstream>
 
 #include <System/EventLock.h>
 #include <System/InterruptedException.h>
 #include <System/Ipv4Address.h>
 #include <System/OperationTimeout.h>
-
+#include <system_error>
 #include "LevinProtocol.h"
 
 using namespace System;
@@ -152,6 +155,7 @@ void P2pContext::timedSyncLoop() {
         break;
       }
     } catch (InterruptedException&) {
+      std::cerr << "Exception in P2pContext::timedSyncLoop" << std::endl;
       // someone stopped us
     } catch (std::exception&) {
       stop(); // stop connection on write error
