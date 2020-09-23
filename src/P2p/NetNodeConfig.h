@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #pragma once
-
+#include <Common/Util.h>
 #include <cstdint>
 #include <vector>
 #include <string>
@@ -48,7 +48,7 @@ public:
   void setConfigFolder(const std::string& folder);
 
 private:
-  std::string bindIp;
+  std::string bindIp = "";
   uint16_t bindPort;
   uint16_t externalPort;
   bool allowLocalIp;
@@ -57,7 +57,7 @@ private:
   std::vector<NetworkAddress> exclusiveNodes;
   std::vector<NetworkAddress> seedNodes;
   bool hideMyPort;
-  std::string configFolder;
+  std::string configFolder = Tools::getDefaultDataDirectory();
   std::string p2pStateFilename;
   bool testnet;
 };
