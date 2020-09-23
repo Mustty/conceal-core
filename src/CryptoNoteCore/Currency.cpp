@@ -362,7 +362,7 @@ namespace CryptoNote
       float m5 = termQuarters * 0.5;
       float m7 = m8 * (1 + (m5 / 100));
       float rate = m7 * qTier;
-      float interest = amount * (rate / 100);
+      float interest = static_cast<float>(amount) * (rate / 100);
       returnVal = static_cast<uint64_t>(interest);
       return returnVal;
     }
@@ -375,7 +375,7 @@ namespace CryptoNote
       float baseInterest = static_cast<float>(0.0696);
       float interestPerWeek = static_cast<float>(0.0002);
       float interestRate = baseInterest + (weeks * interestPerWeek);
-      float interest = actualAmount * ((weeks * interestRate) / 100);
+      float interest = static_cast<float>(actualAmount) * ((weeks * interestRate) / 100);
       returnVal = static_cast<uint64_t>(interest);
       return returnVal;
     }
@@ -409,7 +409,7 @@ namespace CryptoNote
     float eir = (ear / 12) * months;
     returnVal = static_cast<uint64_t>(eir);
 
-    float interest = amount * eir;
+    float interest = static_cast<float>(amount) * eir;
     returnVal = static_cast<uint64_t>(interest);
     return returnVal;
   } /* Currency::calculateInterestV3 */
