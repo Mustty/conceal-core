@@ -152,6 +152,7 @@ void NodeRpcProxy::workerThread(const INode::Callback& initialized_callback) {
     // Make sure all remote spawns are executed
     m_dispatcher->yield();
   } catch (std::exception&) {
+    std::cerr << "Exception in NodeRpcProxy::workerThread" << std::endl;
   }
 
   m_dispatcher = nullptr;
@@ -592,6 +593,8 @@ void NodeRpcProxy::scheduleRequest(std::function<std::error_code()>&& procedure,
     Wrapper(const Wrapper& other)
         : func(other.func), procedure(other.procedure), callback(other.callback) {
     }
+    ~Wrapper(){}
+
     Wrapper(Wrapper&& other) // must be noexcept
         : func(std::move(other.func)), procedure(std::move(other.procedure)), callback(std::move(other.callback)) {
     }
