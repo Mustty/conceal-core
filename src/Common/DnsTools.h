@@ -11,5 +11,5 @@
 #include <vector>
 
 namespace Common {
-  bool fetch_dns_txt(const std::string domain, std::vector<std::string>&records);
+  bool fetch_dns_txt(const std::string &domain, std::vector<std::string>&records);
 }
