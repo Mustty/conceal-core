@@ -105,7 +105,7 @@ namespace
 
     // Iterate through all the languages and find a match
     for (std::vector<Language::Base*>::iterator it1 = language_instances.begin();
-      it1 != language_instances.end(); it1++)
+      it1 != language_instances.end(); ++it1)
     {
       const std::unordered_map<std::string, uint32_t> &word_map = (*it1)->get_word_map();
       const std::unordered_map<std::string, uint32_t> &trimmed_word_map = (*it1)->get_trimmed_word_map();
@@ -115,7 +115,7 @@ namespace
 
       std::string trimmed_word;
       // Iterate through all the words and see if they're all present
-      for (it2 = seed.begin(); it2 != seed.end(); it2++)
+      for (it2 = seed.begin(); it2 != seed.end(); ++it2)
       {
         if (has_checksum)
         {
@@ -181,7 +181,7 @@ namespace
   {
     std::string trimmed_words = "";
 
-    for (std::vector<std::string>::const_iterator it = word_list.begin(); it != word_list.end(); it++)
+    for (std::vector<std::string>::const_iterator it = word_list.begin(); it != word_list.end(); ++it)
     {
       if (it->length() > unique_prefix_length)
       {
@@ -327,7 +327,7 @@ namespace crypto
      * \param  language_name   Language of the seed as found gets written here.
      * \return                 false if not a multiple of 3 words, or if word is not in the words list
      */
-    bool words_to_bytes(std::string words, Crypto::SecretKey& dst,
+    bool words_to_bytes(const std::string& words, Crypto::SecretKey& dst,
       std::string &language_name)
     {
       std::string s;
@@ -466,7 +466,7 @@ namespace crypto
         Language::Singleton<Language::Lojban>::instance()
       });
       for (std::vector<Language::Base*>::iterator it = language_instances.begin();
-        it != language_instances.end(); it++)
+        it != language_instances.end(); ++it)
       {
         languages.push_back((*it)->get_language_name());
       }
