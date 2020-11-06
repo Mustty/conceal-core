@@ -1291,19 +1291,12 @@ namespace CryptoNote
 
     if (minerReward > reward)
     {
-      if (height < 290700)
-      {
-        return true;
-      }
       logger(ERROR, BRIGHT_RED) << "Coinbase transaction spend too much money: " << m_currency.formatAmount(minerReward) << ", block reward is " << m_currency.formatAmount(reward);
       return false;
     }
-    else if (minerReward < reward)
+
+    if (minerReward < reward)
     {
-      if (height < 290700)
-      {
-        return true;
-      }
       logger(ERROR, BRIGHT_RED) << "Coinbase transaction doesn't use full amount of block reward: spent " << m_currency.formatAmount(minerReward) << ", block reward is " << m_currency.formatAmount(reward) << ", fee is " << fee;
       return false;
     }

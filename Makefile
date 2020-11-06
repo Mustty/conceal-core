@@ -14,14 +14,14 @@ all-debug: build-debug
 
 cmake-release:
 	mkdir -p build/release
-	cd build/release && cmake ../..
+	cd build/release && cmake -D CMAKE_BUILD_TYPE=Release ../..
 
 build-release: cmake-release
 	cd build/release && $(MAKE)
 
 build-static: 
 	mkdir -p build/static
-	cd build/static && cmake ../..
+	cd build/static && cmake -D CMAKE_BUILD_TYPE=Release ../..
 	cd build/static && $(MAKE) SHARED=0 CC='gcc -static'
 
 test-release: build-release
@@ -36,4 +36,3 @@ tags:
 	ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ src contrib tests/gtest
 
 .PHONY: all cmake-debug build-debug test-debug all-debug cmake-release build-release test-release all-release clean tags
-
