@@ -22,7 +22,8 @@ namespace CryptoNote {
   /* CryptoNote helper functions                                          */
   /************************************************************************/
   //-----------------------------------------------------------------------------------------------
-  uint64_t getPenalizedAmount(uint64_t amount, size_t medianSize, size_t currentBlockSize) {
+  uint64_t getPenalizedAmount(uint64_t amount, size_t medianSize, size_t currentBlockSize)
+  {
     static_assert(sizeof(size_t) >= sizeof(uint32_t), "size_t is too small");
     assert(currentBlockSize <= 2 * medianSize);
     assert(medianSize <= std::numeric_limits<uint32_t>::max());
@@ -39,16 +40,18 @@ namespace CryptoNote {
     }
 
     uint64_t productHi;
-    //uint64_t productLo = mul128(amount, currentBlockSize * (UINT64_C(2) * medianSize - currentBlockSize), &productHi);
-    //BUGFIX by Monero Project: 32-bit saturation bug (e.g. ARM7), the result was being treated as 32-bit by default
-    uint64_t multiplicand = UINT64_C(2) * medianSize - currentBlockSize;
-    multiplicand *= currentBlockSize;
-    uint64_t productLo = mul128(amount, multiplicand, &productHi);
+    uint64_t productLo =
+        mul128(amount, currentBlockSize * (UINT64_C(2) * medianSize - currentBlockSize), &productHi);
 
     uint64_t penalizedAmountHi;
     uint64_t penalizedAmountLo;
     div128_32(productHi, productLo, static_cast<uint32_t>(medianSize), &penalizedAmountHi, &penalizedAmountLo);
-    div128_32(penalizedAmountHi, penalizedAmountLo, static_cast<uint32_t>(medianSize), &penalizedAmountHi, &penalizedAmountLo);
+    div128_32(
+        penalizedAmountHi,
+        penalizedAmountLo,
+        static_cast<uint32_t>(medianSize),
+        &penalizedAmountHi,
+        &penalizedAmountLo);
 
     assert(0 == penalizedAmountHi);
     assert(penalizedAmountLo < amount);
