@@ -240,6 +240,10 @@ namespace CryptoNote
 
     uint64_t penalizedBaseReward = getPenalizedAmount(baseReward, medianSize, currentBlockSize);
     uint64_t penalizedFee = getPenalizedAmount(fee, medianSize, currentBlockSize);
+    logger(INFO) << "getPenalizedAmount " << getPenalizedAmount;
+    logger(INFO) << "penalizedFee " << penalizedFee;
+    logger(INFO) << "baseReward " << baseReward;
+    logger(INFO) << "fee " << fee;
 
     emissionChange = penalizedBaseReward - (fee - penalizedFee);
     reward = penalizedBaseReward + penalizedFee;
